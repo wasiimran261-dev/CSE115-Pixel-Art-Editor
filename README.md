@@ -4,3 +4,9 @@ Group 6_Members:
 2. Mehrab Hasan(2613095042)
 3. Tahmeed Akanda Protik(2611639042)
 4. Azman Sami(2611617042)
+
+Features:
+- Draw Pixel
+- Erase Pixel
+- Fill Grid
+- Display Grid
