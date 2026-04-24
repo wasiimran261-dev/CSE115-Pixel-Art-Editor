@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 //canvas using 2D Array
 int grid[20][20]; //declared as global variable
 
@@ -7,6 +8,7 @@ int size=20; //declared as global variable
 
 //Grid initialization
 void InitializeGrid(){
+    
     for (int i = 0; i < size; i++){
 
        for (int j = 0; j < size; j++){
@@ -48,7 +50,13 @@ void DrawPixel(){
       row--; //RowIndex-1
       col--; //ColumnIndex-1
 
-      grid[row][col]=color;
+    //Boundary check (if user enters more than 20 or less than 1 for either rows or column,it will be invalid)
+     if(row >= 0 && row < size && col >= 0 && col < size) { //here "user input row and col value" is the Decrement value(Cz of index)
+         grid[row][col] = 0;
+    } 
+    else {
+    printf("!!!Invalid position!!!\n");
+    }
 }
 
 //Erase Tool
@@ -61,8 +69,14 @@ void ErasePixel(){
      scanf("%d", &col);
      row--; //RowIndex-1
      col--; //ColumnIndex-1
-
-     grid[row][col]=0;
+     
+     //Boundary check (if user enters more than 20 or less than 1 for either rows or column,it will be invalid)
+     if(row >= 0 && row < size && col >= 0 && col < size) { //here "user input row and col value" is the Decrement value(Cz of index)
+         grid[row][col] = 0;
+    } 
+    else {
+    printf("!!!Invalid position!!!\n");
+    }
 }
 
 //FillGrid tool(fills the entire grid with one color)
