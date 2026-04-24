@@ -25,7 +25,7 @@ void DisplayGrid(){
        for (int j = 0; j < size; j++){
         if (grid[i][j]==0){
 
-           printf("+ "); //'0' is replaced with '+'(where pixels are blank)
+           printf(" + "); //'0' is replaced with '+'(where pixels are blank)
         }
         else{
            printf("%d ",grid[i][j]); //pixels filled with color 
@@ -39,10 +39,10 @@ void DisplayGrid(){
 //fill color tool
 void DrawPixel(){
       int row,col,color;
-      printf("Enter Row:");
+      printf("Enter Row(1-%d):",size);
       scanf("%d", &row);
 
-      printf("Enter Column:");
+      printf("Enter Column(1-%d):",size);
       scanf("%d", &col);
 
       printf("Enter Color Number:");
@@ -62,10 +62,10 @@ void DrawPixel(){
 //Erase Tool
 void ErasePixel(){
      int row,col;
-     printf("Enter Row:");
+     printf("Enter Row(1-%d):",size);
      scanf("%d", &row);
 
-     printf("Enter Column:");
+     printf("Enter Column(1-%d):",size);
      scanf("%d", &col);
      row--; //RowIndex-1
      col--; //ColumnIndex-1
