@@ -25,7 +25,7 @@ void DisplayGrid(){
        for (int j = 0; j < size; j++){
         if (grid[i][j]==0){
 
-           printf("+ ",grid[i][j]); //'0' is replaced with '+' where pixels are empty
+           printf("+ "); //'0' is replaced with '+'(where pixels are blank)
         }
         else{
            printf("%d ",grid[i][j]); //pixels filled with color 
@@ -52,7 +52,7 @@ void DrawPixel(){
 
     //Boundary check (if user enters more than 20 or less than 1 for either rows or column,it will be invalid)
      if(row >= 0 && row < size && col >= 0 && col < size) { //here "user input row and col value" is the Decrement value(Cz of index)
-         grid[row][col] = 0;
+         grid[row][col] = color;
     } 
     else {
     printf("!!!Invalid position!!!\n");
@@ -96,7 +96,7 @@ void FillGrid(){
 
 int main() {
     InitializeGrid(); //Canvas of the PixelArt editor is ready
-    int choice;
+    int choice=0;
     
     while (choice!=5) //loop will continue until user chooses option 5 to exit
     {
@@ -106,11 +106,11 @@ int main() {
        switch (choice){
         case 1: DisplayGrid(); break;
 
-        case 2: DrawPixel(); break;
+        case 2: DrawPixel(); DisplayGrid(); break;
 
-        case 3: ErasePixel(); break;
+        case 3: ErasePixel(); DisplayGrid(); break;
 
-        case 4: FillGrid(); break;
+        case 4: FillGrid(); DisplayGrid(); break;
 
         case 5: return 0;
 
