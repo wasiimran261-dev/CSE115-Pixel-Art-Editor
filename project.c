@@ -1,100 +1,118 @@
 #include <stdio.h>
+//canvas using 2D Array
+int grid[20][20]; //declared as global variable
 
-int grid[20][20];
-int size = 20;
+//grid size
+int size=20; //declared as global variable
 
-void initializeGrid() {
-    for(int i=0;i<size;i++) {
-        for(int j=0;j<size;j++) {
-            grid[i][j] = 0;
+//Grid initialization
+void InitializeGrid(){
+    for (int i = 0; i < size; i++){
+
+       for (int j = 0; j < size; j++){
+        
+        grid[i][j]=0; //initialized all rows and column elelments to 'zero'
         }
     }
 }
 
-void displayGrid() {
-    for(int i=0;i<size;i++) {
-        for(int j=0;j<size;j++) {
-            printf("%d ", grid[i][j]);
+//Display latest updated grid
+void DisplayGrid(){
+    for (int i = 0; i < size; i++){
+
+       for (int j = 0; j < size; j++){
+        if (grid[i][j]==0){
+
+           printf("+ ",grid[i][j]); //'0' is replaced with '+' where pixels are empty
         }
-        printf("\n");
+        else{
+           printf("%d ",grid[i][j]); //pixels filled with color 
+        }
+                     
+      }
+       printf("\n"); 
     }
 }
 
-void drawPixel() {
-    int row,col,color;
+//fill color tool
+void DrawPixel(){
+      int row,col,color;
+      printf("Enter Row:");
+      scanf("%d", &row);
 
-    printf("Enter row: ");
-    scanf("%d",&row);
+      printf("Enter Column:");
+      scanf("%d", &col);
 
-    printf("Enter column: ");
-    scanf("%d",&col);
+      printf("Enter Color Number:");
+      scanf("%d", &color);
+      row--; //RowIndex-1
+      col--; //ColumnIndex-1
 
-    printf("Enter color number: ");
-    scanf("%d",&color);
-
-    grid[row][col] = color;
+      grid[row][col]=color;
 }
 
-void erasePixel() {
-    int row,col;
+//Erase Tool
+void ErasePixel(){
+     int row,col;
+     printf("Enter Row:");
+     scanf("%d", &row);
 
-    printf("Enter row: ");
-    scanf("%d",&row);
+     printf("Enter Column:");
+     scanf("%d", &col);
+     row--; //RowIndex-1
+     col--; //ColumnIndex-1
 
-    printf("Enter column: ");
-    scanf("%d",&col);
-
-    grid[row][col] = 0;
+     grid[row][col]=0;
 }
 
-void fillGrid() {
-    int color;
+//FillGrid tool(fills the entire grid with one color)
+void FillGrid(){
+     int color;
+     printf("Enter color:");
+     scanf("%d", &color);
 
-    printf("Enter fill color: ");
-    scanf("%d",&color);
-
-    for(int i=0;i<size;i++) {
-        for(int j=0;j<size;j++) {
-            grid[i][j] = color;
-        }
-    }
+     for (int i = 0; i < size; i++)
+     {
+       for (int j = 0; j < size; j++){
+           grid[i][j]=color;
+       }
+     }
 }
+
 
 int main() {
-
+    InitializeGrid(); //Canvas of the PixelArt editor is ready
     int choice;
+    
+    while (choice!=5)
+    {
+       printf("---Pixel Art Editor---\n1.Display Grid\n2.Draw Pixel\n3.Erase Pixel\n4.Fill Grid\n5.Exit\n\nEnter Choice:");
+       scanf("%d", &choice);
 
-    initializeGrid();
+       switch (choice){
+        case 1:
+        DisplayGrid();
+        break;
 
-    while(1) {
+        case 2:
+        DrawPixel();
+        break;
 
-        printf("\n--- Pixel Art Editor ---\n");
-        printf("1. Display Grid\n");
-        printf("2. Draw Pixel\n");
-        printf("3. Erase Pixel\n");
-        printf("4. Fill Grid\n");
-        printf("5. Exit\n");
+        case 3:
+        ErasePixel();
+        break;
 
-        printf("Enter choice: ");
-        scanf("%d",&choice);
+        case 4:
+        FillGrid();
+        break;
 
-        if(choice==1)
-            displayGrid();
+        case 5:
+        return 0;
 
-        else if(choice==2)
-            drawPixel();
-
-        else if(choice==3)
-            erasePixel();
-
-        else if(choice==4)
-            fillGrid();
-
-        else if(choice==5)
-            break;
-
-        else
-            printf("Invalid choice\n");
+        default:
+        printf("!!!!Invalid Choice.Try Again!!!!\n");
+       }
+       
     }
 
     return 0;
