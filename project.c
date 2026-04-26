@@ -82,7 +82,7 @@ void ErasePixel(){
 //FillGrid tool(fills the entire grid with one color)
 void FillGrid(){
      int color;
-     printf("Enter color:");
+     printf("Enter color number('0' will erase progress):");
      scanf("%d", &color);
 
      for (int i = 0; i < size; i++)
