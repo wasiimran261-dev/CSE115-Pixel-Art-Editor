@@ -13,7 +13,7 @@ void InitializeGrid(){
 
        for (int j = 0; j < size; j++){
         
-        grid[i][j]=0; //initialized all rows and column elelments to 'zero'
+        grid[i][j]=0; //initialized all rows and column elements to 'zero'
         }
     }
 }
