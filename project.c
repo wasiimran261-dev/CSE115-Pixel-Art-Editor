@@ -28,7 +28,7 @@ void DisplayGrid(){
            printf(" + "); //'0' is replaced with '+'(where pixels are blank)
         }
         else{
-           printf("%d ",grid[i][j]); //pixels filled with color 
+           printf(" %d ",grid[i][j]); //pixels filled with color 
         }
                      
       }
